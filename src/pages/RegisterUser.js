@@ -13,7 +13,7 @@ function RegisterUser() {
   const { setToken } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState();
-  const [user, setUser] = useState({ userType: 'ROLE_CUSTOMER', email: '', name: '', licenseNo: '', password: '', confirmPassword: '' });
+  const [user, setUser] = useState({ role: 'ROLE_CUSTOMER', email: '', name: '', licenseNumber: '', password: '', confirmPassword: '' });
 
   function changeHandler(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -47,9 +47,9 @@ function RegisterUser() {
         <div className='text-danger mt-2'>
           {error && <DisplayMessage message={error} type="error" />}
         </div>
-        <Form.Group className="mt-4 mb-3" controlId="userTypeGroup">
+        <Form.Group className="mt-4 mb-3" controlId="roleGroup">
           <Form.Label>User type</Form.Label>
-          <Form.Select value={user.userType} onChange={changeHandler} name="userType" autoFocus>
+          <Form.Select value={user.role} onChange={changeHandler} name="role" autoFocus>
             <option value="ROLE_CUSTOMER">Customer</option>
             <option value="ROLER_SELLER">Seller</option>
           </Form.Select>
@@ -66,8 +66,8 @@ function RegisterUser() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="licenseGroup">
           <Form.Label>License number</Form.Label>
-          <Form.Control type="text" name='licenseNo'
-            onChange={changeHandler} required value={user.licenseNo} />
+          <Form.Control type="text" name='licenseNumber'
+            onChange={changeHandler} required value={user.licenseNumber} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="passwordGroup">
           <Form.Label>Password</Form.Label>

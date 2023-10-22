@@ -10,9 +10,9 @@ class UserService {
     }
   }
 
-  register = async ({ email, name, licenseNo, password, confirmPassword }) => {
+  register = async (payload)=> {
     try {
-      const response = await http.post("/users", { role: "ROLE_SELLER", email, name, licenseNo, password, confirmPassword });
+      const response = await http.post("/users", payload);
       return response.data.access_token;
     } catch (error) {
       throw new Error(error.response.data.detail);

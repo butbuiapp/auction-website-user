@@ -12,7 +12,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 const CreateProduct = () => {
-  const today = new Date().toISOString().split("T")[0];
+  // const today = new Date().toISOString().split("T")[0];
+  const now = new Date();
+  // Format the date to the required format (YYYY-MM-DDTHH:MM)
+  const year = now.getFullYear();
+  const month = (now.getMonth() + 1).toString().padStart(2, '0');
+  const day = now.getDate().toString().padStart(2, '0');
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const today = `${year}-${month}-${day}T${hours}:${minutes}`;
+
   const categories = [
     "Electronics",
     "Clothing",
@@ -261,7 +270,7 @@ const CreateProduct = () => {
           <div className="form-group">
             <label htmlFor="bidDueDate">Bid Due Date</label>
             <input
-              type="date"
+              type="datetime-local"
               id="bidDueDate"
               name="bidDueDate"
               value={product.bidDueDate}
@@ -274,7 +283,7 @@ const CreateProduct = () => {
           <div className="form-group">
             <label htmlFor="paymentDueDate">Payment Due Date</label>
             <input
-              type="date"
+              type="datetime-local"
               id="paymentDueDate"
               name="paymentDueDate"
               value={product.paymentDueDate}

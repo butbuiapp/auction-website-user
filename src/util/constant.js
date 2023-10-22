@@ -7,4 +7,4 @@ class Constant {
 
 export default Constant;
 
-export const PRODUCT_STATUS = {DRAFT: 'draft', RELEASE: 'release'};
+export const PRODUCT_STATUS = {DRAFT: 'DRAFT', RELEASE: 'RELEASE'};

@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import "../../css/openAIChatbot.css";
+import "../../css/components/chatbot/openAIChatbot.css";
 import ChatbotSearch from "./ChatbotSearch";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";

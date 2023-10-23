@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../../css/openAIChatbot.css";
+import "../../css/components/chatbot/openAIChatbot.css";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../../css/Modal.css';
+import '../../css/components/chatbot/Modal.css';
 import ChatIcon from '@mui/icons-material/Chat';
 import CloseIcon from '@mui/icons-material/Close';
 import MinimizeIcon from '@mui/icons-material/Minimize';

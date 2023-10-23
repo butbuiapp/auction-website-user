@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom';
 import AuthProvider from './services/AuthProvider';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify'; 
+import ChatbotModal from './components/chatbot/ChatbotModal';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <RouterProvider router={router}/>
       </AuthProvider>
       <ToastContainer/>
+      <ChatbotModal />
     </div>
   );
 }

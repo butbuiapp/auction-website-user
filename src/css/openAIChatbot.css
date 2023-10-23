@@ -1,0 +1,133 @@
+.chatBotReq {
+    color: black;
+    background-color: white;
+    text-wrap: wrap;
+}
+
+.chatBotRes {
+    color: gray;
+    background-color: white;
+    text-wrap: wrap;
+}
+
+.openAIChatBotComponent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    text-wrap: wrap;
+    margin-bottom: 5vh;
+    overflow: auto;
+}
+
+.conversationContainer {
+    background-color: white;
+    font-family: sans-serif;
+    width: 100%;
+    position: relative;
+    text-align: left;
+    padding: 20px;
+    bottom: 20%;
+}
+
+p {
+    margin: 0;
+}
+
+.outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.text-area {
+    margin: 0;
+    width: 90%;
+    height: 100%;
+    resize: none;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    padding: 10px 10px 10px 12px;
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.send-button  {
+    padding: 1rem;
+    border-radius: 1rem;
+    right: 0.1rem;
+    transition: all 0.3s ease;
+    opacity: 0.4;
+    position: absolute !important;
+    height: 99% !important;
+    width: 10%;
+}
+
+.send-button.enabled {
+    background-color: purple;
+    color: white;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.send-button.disabled {
+    color: gray;
+}
+
+.icon {
+    width: 1rem;
+    height: 1rem;
+    margin: 0.25rem 0;
+}
+
+.reset-button  {
+    display: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    right: 20%;
+    transition: all 0.3s ease;
+    opacity: 0.4;
+    position: absolute !important;
+    height: 99% !important;
+    width: 10%;
+}
+
+.reset-button.enabled {
+    display: none;
+    background-color: navy;
+    color: white;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.reset-button.disabled {
+    display: none;
+    color: gray;
+}
+
+.reset-button span, .send-button span{
+    margin: 0 !important;
+}

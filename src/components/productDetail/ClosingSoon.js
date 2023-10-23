@@ -12,11 +12,6 @@ function ClosingSoon({ bidDueDate }) {
     const time = timeLeft(bidDueDate);
     setHour(time.hour);
     setMin(time.min);
-
-    if (time.hour === 0 && time.min === 0) {
-      console.log(intervalId)
-      clearInterval(intervalId);
-    }
   }
 
   useEffect(() => {
@@ -27,13 +22,17 @@ function ClosingSoon({ bidDueDate }) {
     const intervalId = setInterval(() => {
       console.log('inside setInterval');
       calTimeLeft();
-    }, 1000);
+    }, 30000); // every 30s
 
     setIntervalId(intervalId);
 
     return () => clearInterval(intervalId);
   }, [])
 
+  if (hour === 0 && min === 0) {
+    console.log('intervalId', intervalId);
+    if (intervalId) clearInterval(intervalId);
+  }
 
   return (
     <div className="closing-soon">

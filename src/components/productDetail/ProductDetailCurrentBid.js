@@ -26,7 +26,7 @@ function ProductDetailCurrentBid({ productId }) {
 
     if (res) {
       if (res.success) {
-        console.log('getCurrentBid', res);
+        // console.log('getCurrentBid', res);
         setBid({...res.data});
       } else {
         setError(res.message);

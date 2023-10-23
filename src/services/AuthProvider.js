@@ -39,13 +39,13 @@ const AuthProvider = ({ children }) => {
     return !token;
   }
   const hasSellerRole = () => {
-    return jwtDecode(token).roles.includes('SELLER');
+    return token && jwtDecode(token).roles.includes('SELLER');
   }
   const hasCustomerRole = () => {
-    return jwtDecode(token).roles.includes('CUSTOMER');
+    return token && jwtDecode(token).roles.includes('CUSTOMER');
   }
   const hasAdminRole = () => {
-    return jwtDecode(token).roles.includes('ADMIN');
+    return token && jwtDecode(token).roles.includes('ADMIN');
   }
 
   const contextValue = {

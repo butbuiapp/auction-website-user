@@ -7,7 +7,6 @@ export const isClosingSoon = (date) => {
   const currentDate = new Date().toLocaleDateString();
   let dueDate = new Date(date).toLocaleDateString();
 
-  console.log('isClosingSoon', currentDate === dueDate);
   if (currentDate === dueDate) return true;
   return false;
 }
@@ -20,16 +19,19 @@ export const timeLeft = (date) => {
   const diffTime = dueDate - currentDate; //ms
   if (diffTime <= 0) return {hour: 0, min: 0};
 
-  const diffMin = Math.ceil(diffTime / (1000 * 60));
+  const diffSec = Math.ceil(diffTime / (1000));
   
-  const hour = parseInt(diffMin/60);
-  const min = parseInt(diffMin%60);
+  const hour = parseInt(diffSec/(60*60));
+  const min = parseInt(diffSec/(60));
+  const sec = parseInt(diffSec%60);
 
-  return {hour, min};
+  return {hour, min, sec};
 }
 
-export const formatTime = (hour, min) => {
-  return format2Digits(hour) + "h :" + format2Digits(min) + "m";
+export const formatTime = (hour, min, sec) => {
+  return format2Digits(hour) + "h" 
+      + ":" + format2Digits(min) + "m"
+      + ":" + format2Digits(sec) + "s";
 }
 
 const format2Digits = (str) => {

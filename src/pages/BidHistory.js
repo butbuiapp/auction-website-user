@@ -13,8 +13,7 @@ function BidHistory() {
         async function fetchBids() {
             try {
                 const response = await bidService.getMyBidHistory();
-                setBids(response);
-                console.log(response);
+                setBids(response || []);
             } catch (error) {
                 console.error('Error fetching bids', error);
             }
@@ -23,21 +22,47 @@ function BidHistory() {
         fetchBids();
     }, []);
 
-    const groupedBids = bids.reduce((acc, bid) => {
+    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); 
+    const years = (!bids || bids.length === 0) ? [selectedYear] : 
+    [...new Set(bids?.map(bid => new Date(bid.bidDate || bid.depositDate).getFullYear()))] ;
+    
+    const filteredBids = bids?.filter(bid => 
+        new Date(bid.bidDate || bid.depositDate).getFullYear() === parseInt(selectedYear)     
+    );
+
+    const groupedBids = filteredBids?.reduce((acc, bid) => {
         acc[bid.product.id] = acc[bid.product.id] || [];
         acc[bid.product.id].push(bid);
         return acc;
     }, {});
     const [expanded, setExpanded] = useState({});
     const toggleExpand = (productId) => {
-      setExpanded((prev) => ({ ...prev, [productId]: !prev[productId] }));
+        setExpanded((prev) => ({ ...prev, [productId]: !prev[productId] }));
     };
     return (
         <div className='bid-history'>
             <h3>My Bid History</h3>
+            
+            {bids && bids !== null && bids.length > 0 && 
+            <div 
+            style={{marginTop: "20px",marginBottom: "20px", fontSize: "calc(1.3rem + .6vw)"}}>
+            Select year: {" "}
+            <select
+                onChange={e => {setSelectedYear(e.target.value); setExpanded({})}} 
+                value={selectedYear}
+            >{years !== null && years?.length > 0 && years.map(year => <option key={year} value={year}>{year}</option>)}</select>
+            </div>
+            }
+            
             {Object.keys(groupedBids).length > 0 ? (
                 Object.keys(groupedBids).map((productId, index) => (
-                    <div key={productId}>
+                    <div key={productId} 
+                    style={{background: "#f6d97f6e",
+                            borderColor: "#f93e3e",
+                            borderRadius: "4px",
+                            boxShadow: "0 0 3px rgba(0,0,0,.19)",
+                            margin: "0 0 15px"
+                        }}>
                     <button 
                             className="btn swagger-btn" 
                             type="button" 

@@ -11,6 +11,8 @@ import ProductList from './pages/seller/ProductList';
 import CreateProduct from './pages/seller/CreateProduct';
 import Logout from './pages/Logout';
 import NotFound from './components/layout/NotFound';
+import AdminRole from './components/layout/AdminRole';
+import BidSettlement from './pages/admin/BidSettlement';
 
 
 const router = createBrowserRouter([
@@ -50,6 +52,17 @@ const router = createBrowserRouter([
       {
         path: 'products/edit/:id',
         element: <CreateProduct />
+      }
+    ]
+  },
+  {
+    path: '/admin/',
+    element: <AdminRole />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: 'bid-settlement',
+        element: <BidSettlement />
       }
     ]
   },

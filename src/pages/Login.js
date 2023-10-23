@@ -1,6 +1,6 @@
 import DisplayMessage from '../components/layout/DisplayMessage';
 import "../css/pages/Login.css";
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Footer from '../components/layout/Footer';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -10,11 +10,18 @@ import userService from '../services/UserService';
 import { setAuthorizationHeader } from '../services/HttpService';
 
 function Login() {
-  const { setToken } = useContext(AuthContext);
+  const { token, setToken, hasAdminRole, handleLogout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [error, setError] = useState();
   const [user, setUser] = useState({ email: '', password: '' });
+
+  useEffect(() => {
+    // clean the token cached unexpectedly due to improper logout
+    if (token) {
+      handleLogout();
+    }
+  }, []);
 
   function changeHandler(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -25,7 +32,11 @@ function Login() {
     userService.login(user).then(token => {
       setToken(token);
       setAuthorizationHeader(token);
-      navigate("/");
+      if (hasAdminRole()) {
+        navigate("/admin/bid-settlement");
+      } else {
+        navigate("/");
+      }
     }).catch(error => {
       setError(error.message);
       return false;

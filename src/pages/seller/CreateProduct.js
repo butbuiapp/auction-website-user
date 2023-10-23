@@ -114,7 +114,7 @@ const CreateProduct = () => {
   };
   const handleSave = async (release) => {
     try {
-      if (release === "release") {
+      if (release === PRODUCT_STATUS.RELEASE) {
         const requiredFields = [
           "name",
           "description",

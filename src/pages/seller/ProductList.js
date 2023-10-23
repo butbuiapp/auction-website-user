@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import productService from "../../services/ProductService";
 import '../../css/pages/Seller.css';
 import { PRODUCT_STATUS } from "../../util/constant";
@@ -27,7 +27,7 @@ const ProductList = () => {
 
   const [show, setShow] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-
+  const navigate =useNavigate();
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
     setSelectedId(id);
@@ -61,7 +61,6 @@ const ProductList = () => {
             <th>ID</th>
             <th>Name</th>
             <th>Thumbnail</th>
-            <th>Total Bid</th>
             <th>Starting Price</th>
             <th>Deposit</th>
             <th>Bid Due</th>
@@ -74,7 +73,11 @@ const ProductList = () => {
           {products?.map((product) => (
             <tr key={product.id}>
               <td>{product.id}</td>
-              <td>{product.name}</td>
+              <td>
+              <b className="btn-link" style={{cursor:"pointer"}} onClick={()=>{navigate("/product/detail", {state: product.id});}} >
+                    {product.name}
+                  </b>
+                </td>
               <td>
                 <img 
                     src={productService.getProductImage(product?.images[0]?.name)} 
@@ -83,7 +86,6 @@ const ProductList = () => {
                 />
               </td>
               {/* <td>{product.description}</td> */}
-              <td>{product.bidCount - 1 > 0 ? product.bidCount - 1 : 0 }</td>
               <td>${product.bidStartPrice?.toFixed(2)}</td>
               <td>${product.deposit?.toFixed(2)}</td>
               <td>{formatDate(product.bidDueDate)}</td>

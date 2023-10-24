@@ -156,6 +156,13 @@ const CreateProduct = () => {
     navigate("/seller/products");
   };
 
+  const depositHandler = (e) => {
+    const startingPrice = e.target.value;
+    if (!isNaN(startingPrice)) {
+      setProduct({...product, deposit: startingPrice*0.1});
+    }
+  }
+
   return (
     <div className="container mt-3 seller-product-add-container">
       <div className="box">
@@ -251,6 +258,8 @@ const CreateProduct = () => {
               onChange={handleChange}
               className="form-control"
               required
+              onBlur={depositHandler}
+              min={0}
             />
           </div>
 
@@ -264,6 +273,7 @@ const CreateProduct = () => {
               onChange={handleChange}
               className="form-control"
               required
+              min={0}
             />
           </div>
 

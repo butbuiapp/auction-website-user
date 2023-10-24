@@ -21,7 +21,7 @@ function ProductList() {
     const res = await productService.searchProduct(name, pageNumber);
     if (res) {
       if (res.success) {
-        console.log('res.data', res);
+        // console.log('res.data', res);
 
         setProducts(res.data);
         setTotalPages(res.totalPages);

@@ -51,7 +51,7 @@ function RegisterUser() {
           <Form.Label>User type</Form.Label>
           <Form.Select value={user.role} onChange={changeHandler} name="role" autoFocus>
             <option value="ROLE_CUSTOMER">Customer</option>
-            <option value="ROLER_SELLER">Seller</option>
+            <option value="ROLE_SELLER">Seller</option>
           </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3" controlId="emailGroup">

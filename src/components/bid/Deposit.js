@@ -57,7 +57,7 @@ function Deposit({ isShow, setShowDepositModal, productDeposit, productId, reset
       return false;
     }
     if (deposit < productDeposit) {
-      setError('Deposit must be greater than ' + productDeposit);
+      setError('Deposit must be greater than or equal to ' + productDeposit);
       return false;
     }
     return true;

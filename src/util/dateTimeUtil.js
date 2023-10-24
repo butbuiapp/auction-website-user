@@ -17,7 +17,7 @@ export const timeLeft = (date) => {
   const dueDate = new Date(date).getTime();
 
   const diffTime = dueDate - currentDate; //ms
-  if (diffTime <= 0) return {hour: 0, min: 0};
+  if (diffTime <= 0) return {hour: 0, min: 0, sec: 0};
 
   const diffSec = Math.ceil(diffTime / (1000));
   

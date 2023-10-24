@@ -296,9 +296,9 @@ const CreateProduct = () => {
           <ImageUpload setImgs={setImages} />
 
           <div>
-            {product.images?.map((image) => (
+            {product.images?.map((image, index) => (
               <img
-                key={image.id}
+                key={index}
                 src={productService.getProductImage(image.name)}
                 alt={image.name}
                 height={100}
